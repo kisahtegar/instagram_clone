@@ -1,6 +1,6 @@
 # instagram_clone
 
-A new Flutter project.
+A new Flutter project with Clean Architecture.
 
 ## Getting Started
 
