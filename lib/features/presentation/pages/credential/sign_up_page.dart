@@ -22,6 +22,7 @@ class SignUpPage extends StatelessWidget {
               flex: 2,
               child: Container(),
             ),
+            // NOTE: Instagram Logo
             Center(
               child: SvgPicture.asset(
                 'assets/ic_instagram.svg',
@@ -29,6 +30,7 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             sizeVer(15),
+            // NOTE: Profile Picture add
             Center(
               child: Stack(
                 children: [
@@ -55,23 +57,28 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             sizeVer(30),
+            // NOTE: FormContainerWidget for Username
             const FormContainerWidget(
               hintText: 'Username',
             ),
             sizeVer(15),
+            // NOTE: FormContainerWidget for Email
             const FormContainerWidget(
               hintText: 'Email',
             ),
             sizeVer(15),
+            // NOTE: FormContainerWidget for Password
             const FormContainerWidget(
               hintText: 'Password',
               isPasswordField: true,
             ),
             sizeVer(15),
+            // NOTE: FormContainerWidget for Bio
             const FormContainerWidget(
               hintText: "Bio",
             ),
             sizeVer(15),
+            // NOTE: ButtonContainerWidget for Sing Up
             ButtonContainerWidget(
               color: blueColor,
               text: "Sign Up",
@@ -82,6 +89,7 @@ class SignUpPage extends StatelessWidget {
               child: Container(),
             ),
             const Divider(color: secondaryColor),
+            // NOTE: Button to Sign In Page
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -94,7 +102,8 @@ class SignUpPage extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignInPage()),
+                        builder: (context) => const SignInPage(),
+                      ),
                       (route) => false,
                     );
                   },

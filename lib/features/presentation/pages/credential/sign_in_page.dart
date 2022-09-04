@@ -29,15 +29,18 @@ class SignInPage extends StatelessWidget {
               ),
             ),
             sizeVer(30),
+            // NOTE: FormContainerWidget for Email
             const FormContainerWidget(
               hintText: 'Email',
             ),
             sizeVer(15),
+            // NOTE: FormContainerWidget for Password
             const FormContainerWidget(
               hintText: 'Password',
               isPasswordField: true,
             ),
             sizeVer(15),
+            // NOTE: ButtonContainerWidget to Sign In
             ButtonContainerWidget(
               color: blueColor,
               text: "Sign In",
@@ -48,6 +51,7 @@ class SignInPage extends StatelessWidget {
               child: Container(),
             ),
             const Divider(color: secondaryColor),
+            // NOTE: Button to Sign Up Page
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../consts.dart';
+import 'edit_profile_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -15,12 +16,17 @@ class ProfilePage extends StatelessWidget {
           "Username",
           style: TextStyle(color: primaryColor),
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: Icon(
-              Icons.menu,
-              color: primaryColor,
+            padding: const EdgeInsets.only(right: 10.0),
+            child: InkWell(
+              onTap: () {
+                _openBottomModalSheet(context);
+              },
+              child: const Icon(
+                Icons.menu,
+                color: primaryColor,
+              ),
             ),
           )
         ],
@@ -31,6 +37,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // NOTE: Picture, post, followers, Following
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -98,6 +105,7 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
               sizeVer(10),
+              // NOTE: Name
               const Text(
                 "Name",
                 style: TextStyle(
@@ -106,11 +114,13 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               sizeVer(10),
+              // NOTE: Bio
               const Text(
                 "The bio of user",
                 style: TextStyle(color: primaryColor),
               ),
               sizeVer(10),
+              // NOTE: Picture, video, etc
               GridView.builder(
                 itemCount: 32,
                 physics: const ScrollPhysics(),
@@ -132,6 +142,78 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _openBottomModalSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 150,
+          decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+          child: SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      "More Options",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+                  sizeHor(8),
+                  const Divider(thickness: 1, color: secondaryColor),
+                  sizeHor(8),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfilePage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        "Edit Profile",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: primaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  sizeVer(7),
+                  const Divider(thickness: 1, color: secondaryColor),
+                  sizeVer(7),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      "Logout",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+                  sizeVer(7),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

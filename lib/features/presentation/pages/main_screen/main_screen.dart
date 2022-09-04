@@ -66,35 +66,30 @@ class _MainScreenState extends State<MainScreen> {
               MaterialCommunityIcons.home_variant,
               color: primaryColor,
             ),
-            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Ionicons.md_search,
               color: primaryColor,
             ),
-            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Ionicons.md_add_circle,
               color: primaryColor,
             ),
-            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite,
               color: primaryColor,
             ),
-            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.account_circle_outlined,
               color: primaryColor,
             ),
-            label: '',
           ),
         ],
       ),

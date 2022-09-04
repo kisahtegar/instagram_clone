@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/features/presentation/pages/search/widget/search_widget.dart';
+import 'package:instagram_clone/features/presentation/pages/search/widgets/search_widget.dart';
 
 import '../../../../consts.dart';
 
