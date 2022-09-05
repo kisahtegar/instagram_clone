@@ -90,12 +90,7 @@ class HomePage extends StatelessWidget {
                     // Comment
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CommentPage(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, PageConst.commentPage);
                       },
                       child: const Icon(
                         Feather.message_circle,
@@ -209,12 +204,7 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.only(left: 10.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => UpdatePostPage(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, PageConst.updatePostPage);
                       },
                       child: const Text(
                         "Update Post",
