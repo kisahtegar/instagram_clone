@@ -49,7 +49,7 @@ class UpdatePostPage extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 200,
-                decoration: BoxDecoration(color: secondaryColor),
+                decoration: const BoxDecoration(color: secondaryColor),
               ),
               sizeVer(10),
               // NOTE : Description Page

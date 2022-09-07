@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/features/presentation/pages/main_screen/main_screen.dart';
 
 import 'features/presentation/pages/credential/sign_in_page.dart';
+import 'features/presentation/pages/main_screen/main_screen.dart';
 import 'on_generate_route.dart';
 
 void main() {
@@ -21,10 +21,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         "/": (context) {
-          return SignInPage();
+          return const MainScreen();
         },
       },
-      // home: const MainScreen(),
     );
   }
 }

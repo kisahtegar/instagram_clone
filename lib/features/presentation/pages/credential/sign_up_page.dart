@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/consts.dart';
-import 'package:instagram_clone/features/presentation/pages/credential/sign_in_page.dart';
 import 'package:instagram_clone/features/presentation/widgets/form_container_widget.dart';
 
 import '../../widgets/button_container_widget.dart';

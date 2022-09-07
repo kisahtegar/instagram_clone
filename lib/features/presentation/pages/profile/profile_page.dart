@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../consts.dart';
-import 'edit_profile_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);

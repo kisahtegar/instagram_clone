@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/consts.dart';
-import 'package:instagram_clone/features/presentation/pages/post/comment/comment_page.dart';
-
-import '../post/update_post_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -201,7 +198,7 @@ class HomePage extends StatelessWidget {
                   const Divider(thickness: 1, color: secondaryColor),
                   sizeVer(7),
                   Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, PageConst.updatePostPage);
