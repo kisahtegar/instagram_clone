@@ -24,7 +24,7 @@ class UserCubit extends Cubit<UserState> {
       streamResponse.listen((users) {
         emit(UserLoaded(users: users));
       });
-    } on SocketException {
+    } on SocketException catch (_) {
       emit(UserFailure());
     } catch (_) {
       emit(UserFailure());

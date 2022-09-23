@@ -10,7 +10,7 @@ part 'credential_state.dart';
 
 class CredentialCubit extends Cubit<CredentialState> {
   final SignInUserUseCase signInUserUseCase;
-  final SignUpUserUseCase signUpUserUseCase;
+  final SignUpUseCase signUpUserUseCase;
 
   CredentialCubit({
     required this.signInUserUseCase,
