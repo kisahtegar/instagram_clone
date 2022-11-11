@@ -8,7 +8,7 @@ import 'package:instagram_clone/features/presentation/pages/profile/edit_profile
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {
-    final args = settings.arguments;
+    // final args = settings.arguments;
 
     switch (settings.name) {
       case PageConst.editProfilePage:

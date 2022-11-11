@@ -4,7 +4,6 @@ import 'package:instagram_clone/consts.dart';
 import 'package:instagram_clone/features/data/data_sources/remote_data_source/firebase_remote_data_source.dart';
 import 'package:instagram_clone/features/data/models/users/user_model.dart';
 import 'package:instagram_clone/features/domain/entities/user/user_entity.dart';
-import 'package:instagram_clone/features/domain/repositories/firebase_repository.dart';
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   final FirebaseFirestore firebaseFirestore;

@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: backGroundColor,
         title: Text(
           "${currentUser.username}",
-          style: TextStyle(color: primaryColor),
+          style: const TextStyle(color: primaryColor),
         ),
         actions: [
           Padding(

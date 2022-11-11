@@ -2,32 +2,44 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:instagram_clone/features/domain/entities/user/user_entity.dart';
 
 class UserModel extends UserEntity {
-  final String? uid;
-  final String? username;
-  final String? name;
-  final String? bio;
-  final String? website;
-  final String? email;
-  final String? profileUrl;
-  final List? followers;
-  final List? following;
-  final num? totalFollowers;
-  final num? totalFollowing;
-  final num? totalPosts;
+  // final String? uid;
+  // final String? username;
+  // final String? name;
+  // final String? bio;
+  // final String? website;
+  // final String? email;
+  // final String? profileUrl;
+  // final List? followers;
+  // final List? following;
+  // final num? totalFollowers;
+  // final num? totalFollowing;
+  // final num? totalPosts;
 
   const UserModel({
-    this.uid,
-    this.username,
-    this.name,
-    this.bio,
-    this.website,
-    this.email,
-    this.profileUrl,
-    this.followers,
-    this.following,
-    this.totalFollowers,
-    this.totalFollowing,
-    this.totalPosts,
+    String? uid,
+    String? username,
+    String? name,
+    String? bio,
+    String? website,
+    String? email,
+    String? profileUrl,
+    List? followers,
+    List? following,
+    num? totalFollowers,
+    num? totalFollowing,
+    num? totalPosts,
+    // this.uid,
+    // this.username,
+    // this.name,
+    // this.bio,
+    // this.website,
+    // this.email,
+    // this.profileUrl,
+    // this.followers,
+    // this.following,
+    // this.totalFollowers,
+    // this.totalFollowing,
+    // this.totalPosts,
   }) : super(
           uid: uid,
           username: username,
