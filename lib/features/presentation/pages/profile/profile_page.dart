@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instagram_clone/features/domain/entities/user/user_entity.dart';
 import 'package:instagram_clone/features/presentation/cubit/auth/auth_cubit.dart';
+import 'package:instagram_clone/features/presentation/widgets/profile_widget.dart';
 
 import '../../../../consts.dart';
 
@@ -47,12 +48,12 @@ class ProfilePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 80,
                     height: 80,
-                    decoration: const BoxDecoration(
-                      color: secondaryColor,
-                      shape: BoxShape.circle,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(40),
+                      child: profileWidget(imageUrl: currentUser.profileUrl),
                     ),
                   ),
                   Row(
@@ -182,7 +183,11 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PageConst.editProfilePage);
+                        Navigator.pushNamed(
+                          context,
+                          PageConst.editProfilePage,
+                          arguments: currentUser,
+                        );
                       },
                       child: const Text(
                         "Edit Profile",

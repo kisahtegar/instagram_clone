@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 
 class UserEntity extends Equatable {
@@ -17,6 +19,7 @@ class UserEntity extends Equatable {
   // will not going to store in DB
   final String? password;
   final String? otherUid;
+  final File? imageFile;
 
   const UserEntity({
     this.uid,
@@ -33,6 +36,7 @@ class UserEntity extends Equatable {
     this.password,
     this.otherUid,
     this.totalPosts,
+    this.imageFile,
   });
 
   @override
@@ -51,5 +55,6 @@ class UserEntity extends Equatable {
         password,
         otherUid,
         totalPosts,
+        imageFile,
       ];
 }
