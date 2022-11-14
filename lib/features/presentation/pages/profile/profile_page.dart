@@ -183,6 +183,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10.0),
                     child: GestureDetector(
                       onTap: () {
+                        Navigator.pop(context);
                         Navigator.pushNamed(
                           context,
                           PageConst.editProfilePage,
@@ -206,6 +207,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10.0),
                     child: InkWell(
                       onTap: () {
+                        Navigator.pop(context);
                         BlocProvider.of<AuthCubit>(context).loggedOut();
                         Navigator.pushNamedAndRemoveUntil(
                           context,

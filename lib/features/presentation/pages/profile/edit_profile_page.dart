@@ -166,21 +166,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  // _updateUserProfileData() {
-  //   setState(() => _isUpdating = true);
-
-  //   if (_image == null) {
-  //     _updateUserProfile("");
-  //   } else {
-  //     di
-  //         .sl<UploadImageToStorageUseCase>()
-  //         .call(_image!, false, "profileImages")
-  //         .then((profileUrl) {
-  //       _updateUserProfile(profileUrl);
-  //     });
-  //   }
-  // }
-
   _updateUserProfileData() {
     setState(() => _isUpdating = true);
     if (_image == null) {

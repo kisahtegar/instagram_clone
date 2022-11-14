@@ -15,6 +15,8 @@ class GetSingleUserLoaded extends GetSingleUserState {
   final UserEntity user;
 
   const GetSingleUserLoaded({required this.user});
+  @override
+  List<Object> get props => [user];
 }
 
 class GetSingleUserFailure extends GetSingleUserState {}
