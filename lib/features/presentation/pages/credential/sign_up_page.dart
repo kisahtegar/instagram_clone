@@ -28,7 +28,6 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _bioController = TextEditingController();
 
   bool _isSigningUp = false;
-  bool _isUploading = false;
 
   @override
   void dispose() {
@@ -44,6 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Future selectImage() async {
     try {
       final pickedFile =
+          // ignore: invalid_use_of_visible_for_testing_member
           await ImagePicker.platform.getImage(source: ImageSource.gallery);
 
       setState(() {
