@@ -1,65 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/consts.dart';
-
-import '../profile/widgets/profile_form_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:instagram_clone/features/domain/entities/posts/post_entity.dart';
+import 'package:instagram_clone/features/presentation/cubit/post/post_cubit.dart';
+import 'package:instagram_clone/features/presentation/pages/post/widget/update_post_main_widget.dart';
+import 'package:instagram_clone/injection_container.dart' as di;
 
 class UpdatePostPage extends StatelessWidget {
-  const UpdatePostPage({super.key});
+  final PostEntity post;
+  const UpdatePostPage({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backGroundColor,
-      appBar: AppBar(
-        backgroundColor: backGroundColor,
-        title: const Text('Edit Post'),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: Icon(Icons.done, color: blueColor, size: 32),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // NOTE : User image
-              Container(
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  color: secondaryColor,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              sizeVer(10),
-              // NOTE : Username
-              const Text(
-                "Username",
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              sizeVer(10),
-              // NOTE : ?
-              Container(
-                width: double.infinity,
-                height: 200,
-                decoration: const BoxDecoration(color: secondaryColor),
-              ),
-              sizeVer(10),
-              // NOTE : Description Page
-              const ProfileFormWidget(
-                title: "Description",
-              ),
-            ],
-          ),
-        ),
-      ),
+    return BlocProvider<PostCubit>(
+      create: (context) => di.sl<PostCubit>(),
+      child: UpdatePostMainWidget(post: post),
     );
   }
 }

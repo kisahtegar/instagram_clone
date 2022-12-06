@@ -2,11 +2,11 @@ import '../../../entities/posts/post_entity.dart';
 import '../../../repositories/firebase_repository.dart';
 
 class UpdatePostUseCase {
-  final FirebaseRepository firebaseRepository;
+  final FirebaseRepository repository;
 
-  const UpdatePostUseCase({required this.firebaseRepository});
+  const UpdatePostUseCase({required this.repository});
 
   Future<void> call(PostEntity post) {
-    return firebaseRepository.updatePost(post);
+    return repository.updatePost(post);
   }
 }

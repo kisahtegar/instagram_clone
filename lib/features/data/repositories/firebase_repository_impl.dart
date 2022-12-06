@@ -65,5 +65,6 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
       remoteDataSource.readPosts(post);
 
   @override
-  Future<void> updatePost(PostEntity post) async => updatePost(post);
+  Future<void> updatePost(PostEntity post) async =>
+      remoteDataSource.updatePost(post);
 }

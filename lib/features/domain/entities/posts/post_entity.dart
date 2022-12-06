@@ -14,16 +14,16 @@ class PostEntity extends Equatable {
   final Timestamp? createAt;
 
   const PostEntity({
-    required this.postId,
-    required this.creatorUid,
-    required this.username,
-    required this.description,
-    required this.postImageUrl,
-    required this.userProfileUrl,
-    required this.likes,
-    required this.totalLikes,
-    required this.totalComments,
-    required this.createAt,
+    this.postId,
+    this.creatorUid,
+    this.username,
+    this.description,
+    this.postImageUrl,
+    this.userProfileUrl,
+    this.likes,
+    this.totalLikes,
+    this.totalComments,
+    this.createAt,
   });
 
   @override

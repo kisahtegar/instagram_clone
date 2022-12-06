@@ -59,6 +59,7 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context, getSingleUserState) {
         if (getSingleUserState is GetSingleUserLoaded) {
           final currentUser = getSingleUserState.user;
+          debugPrint("MainScreen: currentUser($currentUser)");
           return Scaffold(
             backgroundColor: backGroundColor,
             body: PageView(
@@ -67,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 const HomePage(),
                 const SearchPage(),
-                const UploadPostPage(),
+                UploadPostPage(currentUser: currentUser),
                 const ActivityPage(),
                 ProfilePage(currentUser: currentUser),
               ],

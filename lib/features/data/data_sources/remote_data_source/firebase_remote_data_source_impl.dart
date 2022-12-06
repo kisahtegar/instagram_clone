@@ -299,8 +299,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   @override
   Future<void> updatePost(PostEntity post) async {
     final postCollection = firebaseFirestore.collection(FirebaseConst.posts);
-
-    Map<String, dynamic> postInfo = {};
+    Map<String, dynamic> postInfo = Map();
 
     if (post.description != "" && post.description != null) {
       postInfo['description'] = post.description;

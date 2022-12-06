@@ -14,9 +14,15 @@ import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user
 import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user/upload_image_to_storage_usecase.dart';
 import 'package:instagram_clone/features/presentation/cubit/auth/auth_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/credential/credential_cubit.dart';
+import 'package:instagram_clone/features/presentation/cubit/post/post_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/get_single_user/get_single_user_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/user_cubit.dart';
 
+import 'features/domain/use_cases/firebase_usecases/post/create_post_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/post/delete_post_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/post/like_post_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/post/read_posts_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/post/update_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/create_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_single_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_users_usecase.dart';
@@ -54,7 +60,18 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerFactory(
+    () => PostCubit(
+      createPostUseCase: sl.call(),
+      deletePostUseCase: sl.call(),
+      likePostUseCase: sl.call(),
+      readPostUseCase: sl.call(),
+      updatePostUseCase: sl.call(),
+    ),
+  );
+
   // NOTE: Use Cases
+  // User
   sl.registerLazySingleton(() => SignOutUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => IsSignInUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => GetCurrentUidUseCase(repository: sl.call()));
@@ -64,8 +81,17 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetUsersUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => CreateUserUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => GetSingleUserUseCase(repository: sl.call()));
+
+  // Cloud Storage
   sl.registerLazySingleton(
       () => UploadImageToStorageUseCase(repository: sl.call()));
+
+  // Post
+  sl.registerLazySingleton(() => CreatePostUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => ReadPostsUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => LikePostUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => UpdatePostUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => DeletePostUseCase(repository: sl.call()));
 
   // NOTE: Repository
   sl.registerLazySingleton<FirebaseRepository>(

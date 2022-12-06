@@ -2,11 +2,11 @@ import '../../../entities/posts/post_entity.dart';
 import '../../../repositories/firebase_repository.dart';
 
 class DeletePostUseCase {
-  final FirebaseRepository firebaseRepository;
+  final FirebaseRepository repository;
 
-  const DeletePostUseCase({required this.firebaseRepository});
+  const DeletePostUseCase({required this.repository});
 
   Future<void> call(PostEntity post) {
-    return firebaseRepository.deletePost(post);
+    return repository.deletePost(post);
   }
 }

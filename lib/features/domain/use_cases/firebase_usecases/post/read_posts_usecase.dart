@@ -2,11 +2,11 @@ import '../../../entities/posts/post_entity.dart';
 import '../../../repositories/firebase_repository.dart';
 
 class ReadPostsUseCase {
-  final FirebaseRepository firebaseRepository;
+  final FirebaseRepository repository;
 
-  const ReadPostsUseCase({required this.firebaseRepository});
+  const ReadPostsUseCase({required this.repository});
 
   Stream<List<PostEntity>> call(PostEntity post) {
-    return firebaseRepository.readPosts(post);
+    return repository.readPosts(post);
   }
 }
