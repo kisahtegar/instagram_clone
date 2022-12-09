@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:instagram_clone/features/domain/entities/posts/post_entity.dart';
 import 'package:instagram_clone/features/domain/entities/user/user_entity.dart';
 
+import '../entities/comment/comment_entity.dart';
+
 abstract class FirebaseRepository {
   // Credential Features
   Future<void> signInUser(UserEntity user);
@@ -27,4 +29,11 @@ abstract class FirebaseRepository {
   Future<void> updatePost(PostEntity post);
   Future<void> deletePost(PostEntity post);
   Future<void> likePost(PostEntity post);
+
+  // Comment Features
+  Future<void> createComment(CommentEntity comment);
+  Stream<List<CommentEntity>> readComments(String postId);
+  Future<void> updateComment(CommentEntity comment);
+  Future<void> deleteComment(CommentEntity comment);
+  Future<void> likeComment(CommentEntity comment);
 }
