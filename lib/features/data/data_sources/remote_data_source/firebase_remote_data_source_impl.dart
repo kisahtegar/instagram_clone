@@ -10,6 +10,7 @@ import 'package:instagram_clone/features/data/models/posts/post_model.dart';
 import 'package:instagram_clone/features/data/models/users/user_model.dart';
 import 'package:instagram_clone/features/domain/entities/comment/comment_entity.dart';
 import 'package:instagram_clone/features/domain/entities/posts/post_entity.dart';
+import 'package:instagram_clone/features/domain/entities/replay/replay_entity.dart';
 import 'package:instagram_clone/features/domain/entities/user/user_entity.dart';
 import 'package:uuid/uuid.dart';
 
@@ -443,5 +444,35 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     }
 
     commentCollection.doc(comment.commentId).update(commentInfo);
+  }
+
+  @override
+  Future<void> createReplay(ReplayEntity replay) {
+    // TODO: implement createReplay
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> deleteReplay(ReplayEntity replay) {
+    // TODO: implement deleteReplay
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> likeReplay(ReplayEntity replay) {
+    // TODO: implement likeReplay
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<List<ReplayEntity>> readReplays(ReplayEntity replay) {
+    // TODO: implement readReplays
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> updateReplay(ReplayEntity replay) {
+    // TODO: implement updateReplay
+    throw UnimplementedError();
   }
 }
