@@ -50,7 +50,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         userCollection.doc(uid).update(newUser);
       }
     }).catchError((error) {
-      toast('Some error occur');
+      toast("Some error occur");
     });
   }
 
@@ -81,7 +81,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         userCollection.doc(uid).update(newUser);
       }
     }).catchError((error) {
-      toast('Some error occur');
+      toast("Some error occur");
     });
   }
 
@@ -92,7 +92,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Stream<List<UserEntity>> getSingleUser(String uid) {
     final userCollection = firebaseFirestore
         .collection(FirebaseConst.users)
-        .where('uid', isEqualTo: uid)
+        .where("uid", isEqualTo: uid)
         .limit(1);
 
     return userCollection.snapshots().map((querySnapshot) =>
@@ -117,13 +117,13 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         await firebaseAuth.signInWithEmailAndPassword(
             email: user.email!, password: user.password!);
       } else {
-        toast('Fields cannot be empty');
+        toast("fields cannot be empty");
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
-        toast('User not found');
+        toast("user not found");
       } else if (e.code == "wrong-password") {
-        toast('Invalid email or password');
+        toast("Invalid email or password");
       }
     }
   }
@@ -154,9 +154,9 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
       return;
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
-        toast('email is already taken');
+        toast("email is already taken");
       } else {
-        toast('Something wrong');
+        toast("something went wrong");
       }
     }
   }
@@ -299,6 +299,17 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   }
 
   @override
+  Stream<List<PostEntity>> readSinglePost(String postId) {
+    final postCollection = firebaseFirestore
+        .collection(FirebaseConst.posts)
+        .orderBy("createAt", descending: true)
+        .where("postId", isEqualTo: postId);
+
+    return postCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs.map((e) => PostModel.fromSnapshot(e)).toList());
+  }
+
+  @override
   Future<void> updatePost(PostEntity post) async {
     final postCollection = firebaseFirestore.collection(FirebaseConst.posts);
     Map<String, dynamic> postInfo = {};
@@ -321,16 +332,16 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         .collection(FirebaseConst.comment);
 
     final newComment = CommentModel(
-      commentId: comment.commentId,
-      postId: comment.postId,
-      creatorUid: comment.creatorUid,
-      description: comment.description,
-      username: comment.username,
-      userProfileUrl: comment.userProfileUrl,
-      createAt: comment.createAt,
-      likes: const [],
-      totalReplays: comment.totalReplays,
-    ).toJson();
+            userProfileUrl: comment.userProfileUrl,
+            username: comment.username,
+            totalReplays: comment.totalReplays,
+            commentId: comment.commentId,
+            postId: comment.postId,
+            likes: const [],
+            description: comment.description,
+            creatorUid: comment.creatorUid,
+            createAt: comment.createAt)
+        .toJson();
 
     try {
       final commentDocRef =
@@ -345,7 +356,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
           postCollection.get().then((value) {
             if (value.exists) {
               final totalComments = value.get('totalComments');
-              postCollection.update({"totalComments:": totalComments + 1});
+              postCollection.update({"totalComments": totalComments + 1});
               return;
             }
           });
@@ -374,7 +385,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         postCollection.get().then((value) {
           if (value.exists) {
             final totalComments = value.get('totalComments');
-            postCollection.update({"totalComments:": totalComments - 1});
+            postCollection.update({"totalComments": totalComments - 1});
             return;
           }
         });
@@ -397,11 +408,11 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
       List likes = commentRef.get("likes");
       if (likes.contains(currentUid)) {
         commentCollection.doc(comment.commentId).update({
-          "likes": FieldValue.arrayRemove([likes])
+          "likes": FieldValue.arrayRemove([currentUid])
         });
       } else {
         commentCollection.doc(comment.commentId).update({
-          "likes": FieldValue.arrayUnion([likes])
+          "likes": FieldValue.arrayUnion([currentUid])
         });
       }
     }
@@ -412,7 +423,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     final commentCollection = firebaseFirestore
         .collection(FirebaseConst.posts)
         .doc(postId)
-        .collection(FirebaseConst.comment);
+        .collection(FirebaseConst.comment)
+        .orderBy("createAt", descending: true);
     return commentCollection.snapshots().map((querySnapshot) =>
         querySnapshot.docs.map((e) => CommentModel.fromSnapshot(e)).toList());
   }

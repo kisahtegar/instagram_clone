@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:instagram_clone/features/domain/entities/app_entity.dart';
 import 'package:instagram_clone/features/domain/entities/posts/post_entity.dart';
 import 'package:instagram_clone/features/presentation/pages/post/widget/like_animation_widget.dart';
 import 'package:instagram_clone/features/presentation/widgets/profile_widget.dart';
@@ -139,7 +141,14 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                   // Comment
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, PageConst.commentPage);
+                      Navigator.pushNamed(
+                        context,
+                        PageConst.commentPage,
+                        arguments: AppEntity(
+                          uid: _currentUid,
+                          postId: widget.post.postId,
+                        ),
+                      );
                     },
                     child: const Icon(
                       Feather.message_circle,
@@ -189,9 +198,21 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
           ),
           sizeVer(10),
           // NOTE : View all comments
-          Text(
-            "View all ${widget.post.totalComments} comments",
-            style: const TextStyle(color: darkGreyColor),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                PageConst.commentPage,
+                arguments: AppEntity(
+                  uid: _currentUid,
+                  postId: widget.post.postId,
+                ),
+              );
+            },
+            child: Text(
+              "View all ${widget.post.totalComments} comments",
+              style: const TextStyle(color: darkGreyColor),
+            ),
           ),
           sizeVer(10),
           // NOTE : Date Post

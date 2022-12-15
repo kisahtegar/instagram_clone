@@ -46,7 +46,7 @@ class _UpdatePostMainWidgetState extends State<UpdatePostMainWidget> {
         if (pickedFile != null) {
           _image = File(pickedFile.path);
         } else {
-          print("no image has been selected");
+          toast("no image has been selected");
         }
       });
     } catch (e) {

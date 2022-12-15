@@ -88,4 +88,8 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   @override
   Future<void> updateComment(CommentEntity comment) async =>
       remoteDataSource.updateComment(comment);
+
+  @override
+  Stream<List<PostEntity>> readSinglePost(String postId) =>
+      remoteDataSource.readSinglePost(postId);
 }

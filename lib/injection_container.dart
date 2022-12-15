@@ -14,19 +14,27 @@ import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user
 import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user/upload_image_to_storage_usecase.dart';
 import 'package:instagram_clone/features/presentation/cubit/auth/auth_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/credential/credential_cubit.dart';
+import 'package:instagram_clone/features/presentation/cubit/post/get_single_post/get_single_post_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/post/post_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/get_single_user/get_single_user_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/user_cubit.dart';
 
+import 'features/domain/use_cases/firebase_usecases/comment/create_comment_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/comment/delete_comment_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/comment/like_comment_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/comment/read_comments_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/comment/update_comment_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/create_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/delete_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/like_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/read_posts_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/post/read_single_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/update_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/create_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_single_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_users_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/update_user_usecase.dart';
+import 'features/presentation/cubit/comment/comment_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -70,6 +78,19 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerFactory(
+    () => CommentCubit(
+      createCommentUseCase: sl.call(),
+      deleteCommentUseCase: sl.call(),
+      likeCommentUseCase: sl.call(),
+      readCommentsUseCase: sl.call(),
+      updateCommentUseCase: sl.call(),
+    ),
+  );
+
+  sl.registerFactory(
+      () => GetSinglePostCubit(readSinglePostUseCase: sl.call()));
+
   // NOTE: Use Cases
   // User
   sl.registerLazySingleton(() => SignOutUseCase(repository: sl.call()));
@@ -92,6 +113,14 @@ Future<void> init() async {
   sl.registerLazySingleton(() => LikePostUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => UpdatePostUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => DeletePostUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => ReadSinglePostUseCase(repository: sl.call()));
+
+  // Comment
+  sl.registerLazySingleton(() => CreateCommentUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => ReadCommentsUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => LikeCommentUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => UpdateCommentUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => DeleteCommentUseCase(repository: sl.call()));
 
   // NOTE: Repository
   sl.registerLazySingleton<FirebaseRepository>(
