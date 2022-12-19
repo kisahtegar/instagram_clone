@@ -155,6 +155,9 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
   }
 
   _submitPost() {
+    if (_uploading == true) {
+      return;
+    }
     setState(() {
       _uploading = true;
     });

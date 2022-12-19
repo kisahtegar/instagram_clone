@@ -14,6 +14,7 @@ import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user
 import 'package:instagram_clone/features/domain/use_cases/firebase_usecases/user/upload_image_to_storage_usecase.dart';
 import 'package:instagram_clone/features/presentation/cubit/auth/auth_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/credential/credential_cubit.dart';
+import 'package:instagram_clone/features/presentation/cubit/cubit/replay_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/post/get_single_post/get_single_post_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/post/post_cubit.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/get_single_user/get_single_user_cubit.dart';
@@ -30,6 +31,11 @@ import 'features/domain/use_cases/firebase_usecases/post/like_post_usecase.dart'
 import 'features/domain/use_cases/firebase_usecases/post/read_posts_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/read_single_post_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/post/update_post_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/replay/create_replay_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/replay/delete_replay_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/replay/like_replay_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/replay/read_replays_usecase.dart';
+import 'features/domain/use_cases/firebase_usecases/replay/update_replay_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/create_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_single_user_usecase.dart';
 import 'features/domain/use_cases/firebase_usecases/user/get_users_usecase.dart';
@@ -91,6 +97,17 @@ Future<void> init() async {
   sl.registerFactory(
       () => GetSinglePostCubit(readSinglePostUseCase: sl.call()));
 
+  // Replay Cubit Injection
+  sl.registerFactory(
+    () => ReplayCubit(
+      createReplayUseCase: sl.call(),
+      deleteReplayUseCase: sl.call(),
+      likeReplayUseCase: sl.call(),
+      readReplaysUseCase: sl.call(),
+      updateReplayUseCase: sl.call(),
+    ),
+  );
+
   // NOTE: Use Cases
   // User
   sl.registerLazySingleton(() => SignOutUseCase(repository: sl.call()));
@@ -121,6 +138,13 @@ Future<void> init() async {
   sl.registerLazySingleton(() => LikeCommentUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => UpdateCommentUseCase(repository: sl.call()));
   sl.registerLazySingleton(() => DeleteCommentUseCase(repository: sl.call()));
+
+  // Replay
+  sl.registerLazySingleton(() => CreateReplayUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => ReadReplaysUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => LikeReplayUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => UpdateReplayUseCase(repository: sl.call()));
+  sl.registerLazySingleton(() => DeleteReplayUseCase(repository: sl.call()));
 
   // NOTE: Repository
   sl.registerLazySingleton<FirebaseRepository>(

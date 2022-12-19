@@ -11,6 +11,9 @@ import 'package:instagram_clone/features/presentation/cubit/user/get_single_user
 import 'package:instagram_clone/features/presentation/pages/post/comment/widget/single_comment_widget.dart';
 import 'package:instagram_clone/features/presentation/widgets/profile_widget.dart';
 import 'package:uuid/uuid.dart';
+import 'package:instagram_clone/injection_container.dart' as di;
+
+import '../../../../cubit/cubit/replay_cubit.dart';
 
 class CommentMainWidget extends StatefulWidget {
   final AppEntity appEntity;
@@ -118,21 +121,25 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                                 itemBuilder: (context, index) {
                                   final singleComment =
                                       commentState.comments[index];
-                                  return SingleCommentWidget(
-                                    comment: singleComment,
-                                    onLongPressListener: () {
-                                      _openBottomModalSheet(
-                                        context: context,
-                                        comment: commentState.comments[index],
-                                      );
-                                    },
-                                    onLikeClickListener: () {
-                                      debugPrint(
-                                          "CommentMainWidget[onLikeClickListener]: Tapping!!");
-                                      _likeComment(
-                                          comment:
-                                              commentState.comments[index]);
-                                    },
+                                  return BlocProvider<ReplayCubit>(
+                                    create: (context) => di.sl<ReplayCubit>(),
+                                    child: SingleCommentWidget(
+                                      comment: singleComment,
+                                      currentUser: singleUser,
+                                      onLongPressListener: () {
+                                        _openBottomModalSheet(
+                                          context: context,
+                                          comment: commentState.comments[index],
+                                        );
+                                      },
+                                      onLikeClickListener: () {
+                                        debugPrint(
+                                            "CommentMainWidget[onLikeClickListener]: Tapping!!");
+                                        _likeComment(
+                                            comment:
+                                                commentState.comments[index]);
+                                      },
+                                    ),
                                   );
                                 },
                               ),

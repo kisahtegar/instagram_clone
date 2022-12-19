@@ -45,37 +45,48 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: profileWidget(
-                        imageUrl: "${widget.post.userProfileUrl}",
-                      ),
-                    ),
-                  ),
-                  sizeHor(10),
-                  Text(
-                    '${widget.post.username}',
-                    style: const TextStyle(
-                      color: primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
               GestureDetector(
                 onTap: () {
-                  _openBottomModalSheet(context, widget.post);
+                  Navigator.pushNamed(
+                    context,
+                    PageConst.singleUserProfilePage,
+                    arguments: widget.post.creatorUid,
+                  );
                 },
-                child: const Icon(
-                  Icons.more_vert,
-                  color: primaryColor,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: profileWidget(
+                          imageUrl: "${widget.post.userProfileUrl}",
+                        ),
+                      ),
+                    ),
+                    sizeHor(10),
+                    Text(
+                      '${widget.post.username}',
+                      style: const TextStyle(
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              widget.post.creatorUid == _currentUid
+                  ? GestureDetector(
+                      onTap: () {
+                        _openBottomModalSheet(context, widget.post);
+                      },
+                      child: const Icon(
+                        Icons.more_vert,
+                        color: primaryColor,
+                      ),
+                    )
+                  : const SizedBox(height: 0, width: 0),
             ],
           ),
           sizeVer(10),
@@ -301,7 +312,10 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
 
   _deletePost() {
     BlocProvider.of<PostCubit>(context).deletePost(
-      post: PostEntity(postId: widget.post.postId),
+      post: PostEntity(
+        postId: widget.post.postId,
+        creatorUid: widget.post.creatorUid,
+      ),
     );
   }
 

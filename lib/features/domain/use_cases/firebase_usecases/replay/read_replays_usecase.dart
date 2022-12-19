@@ -1,10 +1,10 @@
 import '../../../entities/replay/replay_entity.dart';
 import '../../../repositories/firebase_repository.dart';
 
-class ReadReplayUseCase {
+class ReadReplaysUseCase {
   final FirebaseRepository repository;
 
-  const ReadReplayUseCase({required this.repository});
+  const ReadReplaysUseCase({required this.repository});
 
   Stream<List<ReplayEntity>> call(ReplayEntity replay) {
     return repository.readReplays(replay);
