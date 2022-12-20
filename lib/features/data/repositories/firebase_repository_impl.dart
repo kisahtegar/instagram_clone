@@ -113,4 +113,12 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   @override
   Future<void> updateReplay(ReplayEntity replay) async =>
       remoteDataSource.updateReplay(replay);
+
+  @override
+  Future<void> followUnFollowUser(UserEntity user) async =>
+      remoteDataSource.followUnFollowUser(user);
+
+  @override
+  Stream<List<UserEntity>> getSingleOtherUser(String otherUid) =>
+      remoteDataSource.getSingleOtherUser(otherUid);
 }

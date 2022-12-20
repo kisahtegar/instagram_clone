@@ -11,6 +11,8 @@ import 'package:instagram_clone/features/presentation/pages/post/comment/edit_co
 import 'package:instagram_clone/features/presentation/pages/post/post_detail/post_detail_page.dart';
 import 'package:instagram_clone/features/presentation/pages/post/update_post_page.dart';
 import 'package:instagram_clone/features/presentation/pages/profile/edit_profile_page.dart';
+import 'package:instagram_clone/features/presentation/pages/profile/followers_page.dart';
+import 'package:instagram_clone/features/presentation/pages/profile/following_page.dart';
 import 'package:instagram_clone/features/presentation/pages/profile/single_user_profile_page.dart';
 
 class OnGenerateRoute {
@@ -63,6 +65,21 @@ class OnGenerateRoute {
           }
           return routeBuilder(const NoPageFound());
         }
+      case PageConst.followingPage:
+        {
+          if (args is UserEntity) {
+            return routeBuilder(FollowingPage(user: args));
+          }
+          return routeBuilder(const NoPageFound());
+        }
+      case PageConst.followersPage:
+        {
+          if (args is UserEntity) {
+            return routeBuilder(FollowersPage(user: args));
+          }
+          return routeBuilder(const NoPageFound());
+        }
+
       case PageConst.signInPage:
         {
           return routeBuilder(const SignInPage());
