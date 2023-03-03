@@ -55,6 +55,7 @@ class _UploadPostMainWidgetState extends State<UploadPostMainWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("UploadPage[build]: Building!!");
     return _image == null
         ? _uploadPostWidget()
         : Scaffold(

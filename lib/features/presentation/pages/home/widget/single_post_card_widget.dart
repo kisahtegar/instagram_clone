@@ -36,6 +36,7 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("HomePage[build]: Building!!");
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       child: Column(

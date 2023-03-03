@@ -49,6 +49,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
     return Scaffold(
       backgroundColor: backGroundColor,
       appBar: AppBar(
+        elevation: 0.0,
         backgroundColor: backGroundColor,
         title: const Text("Comments"),
       ),
@@ -117,6 +118,7 @@ class _CommentMainWidgetState extends State<CommentMainWidget> {
                             // NOTE: User comment output
                             Expanded(
                               child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
                                 itemCount: commentState.comments.length,
                                 itemBuilder: (context, index) {
                                   final singleComment =

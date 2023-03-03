@@ -59,7 +59,7 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context, getSingleUserState) {
         if (getSingleUserState is GetSingleUserLoaded) {
           final currentUser = getSingleUserState.user;
-          debugPrint("MainScreen: currentUser($currentUser)");
+          // debugPrint("MainScreen: currentUser($currentUser)");
           return Scaffold(
             backgroundColor: backGroundColor,
             body: PageView(

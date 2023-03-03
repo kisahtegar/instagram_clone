@@ -7,6 +7,7 @@ class ActivityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("ActivityPage[build]: Building!!");
     return Scaffold(
       backgroundColor: backGroundColor,
       appBar: AppBar(

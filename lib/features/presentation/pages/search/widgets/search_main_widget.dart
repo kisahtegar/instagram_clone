@@ -37,6 +37,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("SearchPage[build]: Building!!");
     return SafeArea(
       child: Scaffold(
         backgroundColor: backGroundColor,

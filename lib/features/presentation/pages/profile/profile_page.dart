@@ -12,6 +12,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("ProfilePage[build]: Building!!");
     return BlocProvider<PostCubit>(
       create: (context) => di.sl<PostCubit>(),
       child: ProfileMainWidget(currentUser: currentUser),
