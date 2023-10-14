@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_icons/flutter_icons.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_clone/consts.dart';
 import 'package:instagram_clone/features/presentation/cubit/user/get_single_user/get_single_user_cubit.dart';
 import 'package:instagram_clone/features/presentation/pages/activity/activity_page.dart';
@@ -79,19 +77,19 @@ class _MainScreenState extends State<MainScreen> {
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(
-                    MaterialCommunityIcons.home_variant,
+                    FontAwesomeIcons.house,
                     color: primaryColor,
                   ),
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Ionicons.md_search,
+                    FontAwesomeIcons.magnifyingGlass,
                     color: primaryColor,
                   ),
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Ionicons.md_add_circle,
+                    FontAwesomeIcons.circlePlus,
                     color: primaryColor,
                   ),
                 ),

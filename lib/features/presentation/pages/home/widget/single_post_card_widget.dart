@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_clone/features/domain/entities/app_entity.dart';
 import 'package:instagram_clone/features/domain/entities/posts/post_entity.dart';
 import 'package:instagram_clone/features/presentation/pages/post/widget/like_animation_widget.dart';
@@ -163,14 +162,14 @@ class _SinglePostCardWidgetState extends State<SinglePostCardWidget> {
                       );
                     },
                     child: const Icon(
-                      Feather.message_circle,
+                      FontAwesomeIcons.message,
                       color: primaryColor,
                     ),
                   ),
                   sizeHor(10),
                   // send share
                   const Icon(
-                    Feather.send,
+                    FontAwesomeIcons.share,
                     color: primaryColor,
                   ),
                 ],

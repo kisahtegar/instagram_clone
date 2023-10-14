@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_clone/features/presentation/cubit/post/get_single_post/get_single_post_cubit.dart';
 import 'package:intl/intl.dart';
 import 'package:instagram_clone/injection_container.dart' as di;
@@ -176,14 +175,14 @@ class _PostDetailMainWidgetState extends State<PostDetailMainWidget> {
                               );
                             },
                             child: const Icon(
-                              Feather.message_circle,
+                              FontAwesomeIcons.message,
                               color: primaryColor,
                             ),
                           ),
                           sizeHor(10),
                           // send share
                           const Icon(
-                            Feather.send,
+                            FontAwesomeIcons.share,
                             color: primaryColor,
                           ),
                         ],
